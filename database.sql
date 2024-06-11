@@ -126,8 +126,8 @@ values
 	('Abelardo Silva', 'Niterói', 'RJ', 'M', 'solteiro', '2002-01-01', 'vendedor'),
 	('Marco Santos', 'Rio de Janeiro', 'RJ', 'F', 'casado', '2000-11-11', 'vendedor'),
     ('João Costa', 'Rio de Janeiro', 'RJ', 'M', 'divorciado', '2003-11-01', 'ajudante'),
-	('Isabela Trindade', 'Rio de Janeiro', 'RJ', 'F', 'casado', '1993-07-30', 'vendedor'),
-	('Rebeca Santos', 'Duque de Caxias', 'RJ', 'F', 'separado', '1999-12-31', 'ajudante');
+	('Isabela Trindade', 'Rio de Janeiro', 'RJ', 'F', 'casado', '1992-07-30', 'vendedor'),
+	('Rebeca Santos', 'Duque de Caxias', 'RJ', 'F', 'separado', '1960-12-31', 'ajudante');
 	
 
 -- Inserir registros na tabela de fabricantes
