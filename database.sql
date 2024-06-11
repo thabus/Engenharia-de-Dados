@@ -82,8 +82,8 @@ create table compras (
 
 -- Criar tabela de relacionamento entre compras e produtos
 create table compras_produtos (
-	cod_compra int references compras(cod_compra),
-	cod_produto int references produtos(cod_produto),
+	cod_compra int not references compras(cod_compra),
+	cod_produto int not references produtos(cod_produto),
   
   	valor_desconto numeric(12,2) default 0 check (
     	coalesce(valor_desconto, 0) >= 0
@@ -139,12 +139,34 @@ values
 	('Koka Mola Fabricante', 'https://kokamola.com', 'kokamola@kokamola.com'),
 	('Marikver Inc.', 'https://marickver.com', 'contato@marikver.com');
 
+-- Inserir registros na tabela de produtos
+insert into produtos
+	(nome, descricao, preco, cod_fabricante)
+values
+	('Cortador de unha', 'Pra cortar unha', 11.99, 1),
+	('Guarda chuva furado', 'Não precisa explicar', 9.87, 1),
+	('Cerveja sem álcool', 'Para quem não gosta de beber e dirigir', 5.89, 2),
+	('Martelo sem cabeça', null, 17.55, 2),
+	('Oxigênio engarrafado', 'Pra respirar melhor!', 99.99, 3),
+	('Monóxido de carbono engarrafado', 'Pra respirar pior!', 99.99, 3),
+	('Carne vegana', 'Feita com apenas 54 ingredientes!', 120.99, 4),
+	('Ovo de tatu', 'Muito bom, vale experimentar!', 11.99, 4);
 
 
+-- 2.a
+select nome, site, email from fabricantes;
 
+-- 2.b
+select nome from clientes
+where 
+	cidade not like 'rio de janeiro' and
+    cidade not like 'niterói';
+    
+-- 2.c
+select nome from funcionarios
+where 
+	timestampdiff(year, dt_nascimento, current_timestamp) <= 30;
 
-
-
-
-
+-- 2.d
+select coalesce(sum(qtd), 0) as qtd_total_produtos from compras_produtos;
 
