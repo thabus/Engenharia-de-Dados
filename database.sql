@@ -9,9 +9,9 @@ create table clientes (
 	nome varchar(150) not null,
   	cidade varchar(100) not null,
   	estado char(2) not null,
-  	genero char(1) not null check (genero = 'M' or genero = 'F'),
+  	genero char(1) not null constraint clientes_genero_check check (genero = 'M' or genero = 'F'),
   	dt_nascimento date not null,
-  	estado_civil varchar(150) not null check (
+  	estado_civil varchar(150) not null constraint clientes_estado_civil_check check (
     	estado_civil = 'solteiro' or
     	estado_civil = 'casado' or
     	estado_civil = 'divorciado' or
@@ -25,16 +25,16 @@ create table funcionarios (
   	nome varchar(150) not null,
   	cidade varchar(100) not null,
   	estado char(2) not null,
-  	genero char(1) not null check (genero = 'M' or genero = 'F'),
+  	genero char(1) not null constraint funcionarios_genero_check check (genero = 'M' or genero = 'F'),
   	dt_nascimento date not null,
-  	estado_civil varchar(50) not null check (
+  	estado_civil varchar(50) not null constraint funcionarios_estado_civil_check check (
     	estado_civil = 'solteiro' or
     	estado_civil = 'casado' or
     	estado_civil = 'divorciado' or
     	estado_civil = 'viuvo' or
     	estado_civil = 'separado'
     ),
-  	cargo varchar(50) not null check (
+  	cargo varchar(50) not null constraint funcionarios_cargo_check check (
     	cargo = 'vendedor' or 
       	cargo = 'gerente' or
       	cargo = 'ajudante'
@@ -104,7 +104,16 @@ values
 	('Lucas Bragança', 'Rio de Janeiro', 'RJ', 'M', 'casado', '2002-02-27');
 
 
-
+insert into funcionarios 
+	(nome, cidade, estado, genero, estado_civil, dt_nascimento, cargo)
+values
+	('Felipe Raposo', 'Rio de Janeiro', 'RJ', 'M', 'solteiro', '2001-10-16', 'gerente'),
+	('Abelardo Silva', 'Niterói', 'RJ', 'M', 'solteiro', '2002-01-01', 'vendedor'),
+	('Marco Santos', 'Rio de Janeiro', 'RJ', 'F', 'casado', '2000-11-11', 'vendedor'),
+    ('João Costa', 'Rio de Janeiro', 'RJ', 'M', 'divorciado', '2003-11-01', 'ajudante'),
+	('Isabela Trindade', 'Rio de Janeiro', 'RJ', 'F', 'casado', '1993-07-30', 'vendedor'),
+	('Rebeca Santos', 'Duque de Caxias', 'RJ', 'F', 'separado', '1999-12-31', 'ajudante');
+	
 
 
 
