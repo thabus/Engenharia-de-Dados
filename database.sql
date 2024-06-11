@@ -1,9 +1,17 @@
+-- Grupo 4
+/*
+  Felipe Seda Raposo de Almeida
+*/
+
+
+-- Excluir o banco de dados e recria-lo
 drop database if exists commerce;
 
 create database commerce;
 
 use commerce;
 
+-- Criar tabela de clientes
 create table clientes (
 	cod_cliente int primary key auto_increment,
 	nome varchar(150) not null,
@@ -20,6 +28,7 @@ create table clientes (
     )
 );
 
+-- Criar tabela de funcionarios
 create table funcionarios (
 	cod_funcionario int primary key auto_increment,
   	nome varchar(150) not null,
@@ -41,6 +50,7 @@ create table funcionarios (
     )
 );
 
+-- Criar tabela de fabricantes
 create table fabricantes (
 	cod_fabricante int primary key auto_increment,
   	nome varchar(150) not null,
@@ -48,6 +58,7 @@ create table fabricantes (
   	email varchar(150) not null
 );
 
+-- Criar tabela de produtos
 create table produtos (
 	cod_produto int primary key auto_increment,
   	nome varchar(150) unique not null,
@@ -59,6 +70,7 @@ create table produtos (
   	cod_fabricante int not null references fabricantes(cod_fabricante)
 );
 
+-- Criar tabela de compras
 create table compras (
 	cod_compra int primary key auto_increment,
   	hora time not null default (current_time),
@@ -68,6 +80,7 @@ create table compras (
   	cod_funcionario int not null references funcionarios(cod_funcionario)
 );
 
+-- Criar tabela de relacionamento entre compras e produtos
 create table compras_produtos (
 	cod_compra int references compras(cod_compra),
 	cod_produto int references produtos(cod_produto),
@@ -82,6 +95,7 @@ create table compras_produtos (
   	primary key (cod_compra, cod_produto)
 );
 
+-- Inserir registros na tabela de clientes
 insert into clientes 
 	(nome, cidade, estado, genero, estado_civil, dt_nascimento)
 values
@@ -104,6 +118,7 @@ values
 	('Lucas Bragança', 'Rio de Janeiro', 'RJ', 'M', 'casado', '2002-02-27');
 
 
+-- Inserir registros na tabela de funcionarios
 insert into funcionarios 
 	(nome, cidade, estado, genero, estado_civil, dt_nascimento, cargo)
 values
@@ -114,6 +129,15 @@ values
 	('Isabela Trindade', 'Rio de Janeiro', 'RJ', 'F', 'casado', '1993-07-30', 'vendedor'),
 	('Rebeca Santos', 'Duque de Caxias', 'RJ', 'F', 'separado', '1999-12-31', 'ajudante');
 	
+
+-- Inserir registros na tabela de fabricantes
+insert into fabricantes 
+	(nome, site, email)
+values
+	('Produtos China', null, 'contato@produtoschina.com'),
+	('Produtos Paraguai', 'https://produtosparaguai.com', 'contato@produtosparaguai.com'),
+	('Koka Mola Fabricante', 'https://kokamola.com', 'kokamola@kokamola.com'),
+	('Marikver Inc.', 'https://marickver.com', 'contato@marikver.com');
 
 
 
