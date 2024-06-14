@@ -160,13 +160,63 @@ select nome, site, email from fabricantes;
 select nome from clientes
 where 
 	cidade not like 'rio de janeiro' and
-    cidade not like 'niterói';
+    cidade not like 'niterói'
+    order by nome;
     
 -- 2.c
 select nome from funcionarios
 where 
-	timestampdiff(year, dt_nascimento, current_timestamp) <= 30;
+	timestampdiff(year, dt_nascimento, current_timestamp) <= 30
+    AND genero = 'F';
 
 -- 2.d
 select coalesce(sum(qtd), 0) as qtd_total_produtos from compras_produtos;
 
+-- 2.e
+select pr.nome , cp.qtd * pr.preco - cp.valor_desconto as preco
+from produtos as pr , compras_produtos as cp
+where cp.cod_produto = pr.cod_produto
+order by preco desc
+limit 1;
+
+-- 2.f
+SELECT 
+    cli.estado AS estado_cliente,
+    SUM(cp.qtd * p.preco - cp.valor_desconto) AS total_vendas
+FROM 
+    compras c
+JOIN 
+    compras_produtos cp ON c.cod_compra = cp.cod_compra
+JOIN 
+    produtos p ON cp.cod_produto = p.cod_produto
+JOIN 
+    clientes cli ON c.cod_cliente = cli.cod_cliente
+GROUP BY 
+    cli.estado;
+
+--2.g
+SELECT DISTINCT 
+    p.nome
+FROM 
+    compras c
+JOIN 
+    compras_produtos cp ON c.cod_compra = cp.cod_compra
+JOIN 
+    produtos p ON cp.cod_produto = p.cod_produto
+JOIN 
+    clientes cli ON c.cod_cliente = cli.cod_cliente
+WHERE 
+    cli.cidade = 'Niterói'
+ORDER BY 
+    p.nome;
+
+-- 2.h
+SELECT 
+    estado_civil,
+    COUNT(*) AS quantidade_clientes
+FROM 
+    clientes
+GROUP BY 
+    estado_civil
+HAVING 
+    COUNT(*) > 5;
