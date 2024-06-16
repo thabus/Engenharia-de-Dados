@@ -1,5 +1,6 @@
 -- Grupo 4
 /*
+  202301135745   - Erik Marcio Fernandes Perira
 			   - Felipe Seda Raposo de Almeida
   202208386296 - Thaís Bustamante
 */
@@ -292,3 +293,16 @@ SELECT estado_civil, COUNT(*) AS quantidade_clientes
 FROM clientes
 GROUP BY estado_civil
 HAVING COUNT(*) > 5;
+
+-- 2.i
+  SELECT * 
+FROM compras
+WHERE hora >= '20:00:00'
+  AND hora < '21:00:00'
+	  
+-- 2.j
+SELECT *
+FROM compras_produtos
+INNER JOIN compras AS co ON cl.cod_cliente = co.cod_cliente
+INNER JOIN compras_produtos AS cp ON co.cod_compra = cp.cod_compra
+WHERE cp.valor_desconto > 0;
