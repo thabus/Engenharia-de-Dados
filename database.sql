@@ -2,7 +2,7 @@
 /*
   202301135745   - Erik Marcio Fernandes Perira
   202307539775   - Felipe Seda Raposo de Almeida
-  202208386296   - Thaís Bustamante
+  202208386296   - Thaís de Araujo Bustamante
   202301135265   - Thiago Brandão
 */
 
@@ -295,8 +295,7 @@ HAVING COUNT(*) > 5;
 
 -- 2.i
 SELECT COUNT(*) AS qtd_compras
-FROM compras AS co INNER JOIN compras_produtos AS cp
- ON co.cod_compra = cp.cod_compra
+FROM compras
 WHERE hora BETWEEN '20:00:00' AND '21:00:00';
 	  
 -- 2.j
