@@ -238,7 +238,6 @@ VALUES
 	(24, 8, 0.00, 9),
 	(25, 1, 0.00, 8);
     
-SELECT * FROM compras;
 -- 2.a
 SELECT nome, site, email FROM fabricantes;
 
