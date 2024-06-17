@@ -136,25 +136,11 @@ INSERT INTO funcionarios
 	(nome, cidade, estado, genero, estado_civil, dt_nascimento, cargo)
 VALUES
 	('Felipe Raposo', 'Rio de Janeiro', 'RJ', 'M', 'solteiro', '2001-10-16', 'gerente'),
-	('Abelardo Silva', 'Niterói', 'RJ', 'M', 'solteiro', '2002-01-01', 'vendedor'),
-	('Marco Santos', 'Rio de Janeiro', 'RJ', 'F', 'casado', '2000-11-11', 'vendedor'),
+	('Ariadne Silva', 'Niterói', 'RJ', 'F', 'solteiro', '2002-01-01', 'vendedor'),
+	('Marcela Santos', 'Rio de Janeiro', 'RJ', 'F', 'casado', '2000-11-11', 'vendedor'),
     ('João Costa', 'Rio de Janeiro', 'RJ', 'M', 'divorciado', '2003-11-01', 'ajudante'),
 	('Isabela Trindade', 'Rio de Janeiro', 'RJ', 'F', 'casado', '1992-07-30', 'vendedor'),
 	('Rebeca Santos', 'Duque de Caxias', 'RJ', 'F', 'separado', '1960-12-31', 'ajudante');
-
-
--- Fazendo algumas mudanças nos dados	
--- Mudando o nome
-UPDATE funcionarios SET nome = 'Ariadne Silva' 
-WHERE cod_funcionario = 2;
-
-UPDATE funcionarios SET nome = 'Marcela Santos' 
-WHERE cod_funcionario = 3;
-
--- Mudando o genero
-UPDATE funcionarios SET genero = 'F' 
-WHERE cod_funcionario = 2;
-
 
 -- Inserir registros na tabela de fabricantes
 INSERT INTO fabricantes 
@@ -304,4 +290,3 @@ FROM compras_produtos AS cp INNER JOIN compras AS co
 INNER JOIN clientes AS cl
  ON co.cod_cliente = cl.cod_cliente
 WHERE cp.valor_desconto > 0;
-
